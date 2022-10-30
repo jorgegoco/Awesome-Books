@@ -1,6 +1,6 @@
-import {books} from '../index.js'
+export const books = JSON.parse(localStorage.getItem('booksData')) || [];
 
-function Book(title, author) {
+export function Book(title, author) {
   this.title = title;
   this.author = author;
 }

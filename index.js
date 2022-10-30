@@ -1,15 +1,13 @@
 import restore from './modules/restore.js';
-import { startPage } from './modules/pages.js';
-import { addBook, removeBook } from './modules/book.js';
-
-export const books = JSON.parse(localStorage.getItem('booksData')) || [];
-export const bookList = document.querySelector('.book-list');
+import startPage from './modules/pages.js';
+import {
+  addBook, removeBook, books,
+} from './modules/book.js';
 
 startPage();
-reLoad();
 
 function reLoad() {
-  restore();
+  restore(books);
   const allButtons = Array.from(document.querySelectorAll('.button'));
   allButtons.forEach((allButton) => {
     allButton.addEventListener('click', () => {
@@ -21,6 +19,8 @@ function reLoad() {
     });
   });
 }
+
+reLoad();
 
 const form = document.querySelector('.form');
 form.addEventListener('submit', (event) => {

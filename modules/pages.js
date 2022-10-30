@@ -19,7 +19,7 @@ function contactPage() {
   document.querySelector('.form').style.display = 'none';
 }
 
-export function startPage() {
+export default function startPage() {
   document.querySelector('.button-list').addEventListener('click', listPage);
   document.querySelector('.button-add').addEventListener('click', addPage);
   document.querySelector('.button-contact').addEventListener('click', contactPage);

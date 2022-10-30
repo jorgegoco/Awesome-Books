@@ -1,7 +1,5 @@
-import {books, bookList} from '../index.js'
-
-export default function restore() {
-  bookList.replaceChildren();
+export default function restore(books) {
+  document.querySelector('.book-list').replaceChildren();
   for (let i = 0; i < books.length; i += 1) {
     const div = document.createElement('div');
     div.className = 'book-element';
@@ -15,6 +13,6 @@ export default function restore() {
     const buttonText = document.createTextNode('Remove');
     button.appendChild(buttonText);
     div.appendChild(button);
-    bookList.appendChild(div);
+    document.querySelector('.book-list').appendChild(div);
   }
 }

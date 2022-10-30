@@ -5,11 +5,11 @@ export function Book(title, author) {
   this.author = author;
 }
 
-export function addBook(title, author) {
+export const addBook = (title, author) => {
   const newBook = new Book(title, author);
   books.push(newBook);
-}
+};
 
-export function removeBook(index) {
+export const removeBook = (index) => {
   books.splice(index, 1);
-}
+};

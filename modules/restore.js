@@ -1,4 +1,4 @@
-export default function restore(books) {
+const restore = (books) => {
   document.querySelector('.book-list').replaceChildren();
   for (let i = 0; i < books.length; i += 1) {
     const div = document.createElement('div');
@@ -15,4 +15,5 @@ export default function restore(books) {
     div.appendChild(button);
     document.querySelector('.book-list').appendChild(div);
   }
-}
+};
+export default restore;

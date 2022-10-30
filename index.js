@@ -6,7 +6,7 @@ import {
 
 startPage();
 
-function reLoad() {
+const reLoad = () => {
   restore(books);
   const allButtons = Array.from(document.querySelectorAll('.button'));
   allButtons.forEach((allButton) => {
@@ -18,7 +18,7 @@ function reLoad() {
       reLoad();
     });
   });
-}
+};
 
 reLoad();
 

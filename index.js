@@ -1,38 +1,15 @@
-const books = JSON.parse(localStorage.getItem('booksData')) || [];
+import restore from './modules/restore.js';
+import { startPage } from './modules/pages.js';
+import { addBook, removeBook } from './modules/book.js';
 
-function Book(title, author) {
-  this.title = title;
-  this.author = author;
-}
+export const books = JSON.parse(localStorage.getItem('booksData')) || [];
+export const bookList = document.querySelector('.book-list');
 
-function addBook(title, author) {
-  const newBook = new Book(title, author);
-  books.push(newBook);
-}
-
-function removeBook(index) {
-  books.splice(index, 1);
-}
-
-const bookList = document.querySelector('.book-list');
+startPage();
+reLoad();
 
 function reLoad() {
-  bookList.replaceChildren();
-  for (let i = 0; i < books.length; i += 1) {
-    const div = document.createElement('div');
-    div.className = 'book-element';
-    const p = document.createElement('p');
-    const pText = document.createTextNode(`${books[i].title} by ${books[i].author}`);
-    p.appendChild(pText);
-    div.appendChild(p);
-    const button = document.createElement('button');
-    button.className = 'button';
-    button.id = `button${i}`;
-    const buttonText = document.createTextNode('Remove');
-    button.appendChild(buttonText);
-    div.appendChild(button);
-    bookList.appendChild(div);
-  }
+  restore();
   const allButtons = Array.from(document.querySelectorAll('.button'));
   allButtons.forEach((allButton) => {
     allButton.addEventListener('click', () => {
@@ -44,7 +21,7 @@ function reLoad() {
     });
   });
 }
-reLoad();
+
 const form = document.querySelector('.form');
 form.addEventListener('submit', (event) => {
   event.preventDefault();

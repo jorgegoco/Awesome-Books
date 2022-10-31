@@ -3,6 +3,7 @@ import startPage from './modules/pages.js';
 import {
   addBook, removeBook, books,
 } from './modules/book.js';
+import { DateTime } from './modules/date.js';
 
 startPage();
 
@@ -32,3 +33,12 @@ form.addEventListener('submit', (event) => {
   form.reset();
   reLoad();
 });
+
+const datetime = DateTime.now();
+document.querySelector('.date-time').textContent = datetime.toLocaleString(DateTime.DATETIME_MED);
+const refreshTime = () => {
+  const timeDisplay = document.querySelector('.date-time');
+  const datetime = DateTime.now();
+  timeDisplay.textContent = datetime.toLocaleString(DateTime.DATETIME_MED);
+};
+setInterval(refreshTime, 1000);
